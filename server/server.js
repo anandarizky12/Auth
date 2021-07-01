@@ -1,8 +1,9 @@
 const express = require('express');
-const authroutes = require('./routes/auth');
 const errorHandler= require('./middleware/error');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
+const authroutes = require('./routes/auth');
+const authroutesprivate = require('./routes/private');
 
 
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/api/auth', authroutes)
+app.use('/api/private', authroutesprivate)
 
 
 //error handler
